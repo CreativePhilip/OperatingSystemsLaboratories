@@ -1,7 +1,7 @@
 # Lab 1 Task
 ## Abstract
 The task is to implement the following scheduling algorithms and to compare the averages of various waiting times
-for the processes. <br/> In my case I have 2 average time for first execution,and the average time spent idle since
+for the processes. <br/> In my case I have the average time for first execution, and the average time spent idle since
 entering the awaiting processes queue.
 
 ## Implemented algorithms
@@ -14,7 +14,8 @@ In this algorithm we just substitute the FIFO stack for a Collection sorted by t
 3. SJF, aka. "Smallest Job First", Preemptive <br/>
 Is exactly the same as algorithm no.2 but every set interval the currently executing process has a change of being
    downgraded to a PAUSE state if a shorter job appears in the Collection
-4. ROT, aka. Rotational Scheduler
+4. ROT, aka. Rotational Scheduler <br/>
+   Every set amount of time we pop a process of the queue let it execute and if has not finished during the set amount of time we push it on to the queue again
    
 ## Backend system 
 To ensure results consistent across algorithms a robust backend was required. To achieve that I have created
