@@ -9,7 +9,7 @@ class Rotational:
         self.seen_nodes = []
 
     def __call__(self, queue: ProcessQueue, prev_proc: Process) -> Optional[Process]:
-        if len(queue.items) == 0:
+        if queue.is_empty():
             return None
 
         for proc in queue.items:

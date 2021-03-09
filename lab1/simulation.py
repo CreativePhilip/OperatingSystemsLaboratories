@@ -28,8 +28,11 @@ class Simulation:
 
             if current_process:
                 current_process.tick(self.global_timer)
+
+                if current_process.start_time == self.global_timer:
+                    self.stats.waiting_times.append(current_process.start_time - current_process.time_of_arrival)
+
                 if current_process.is_finished():
-                    self.stats.waiting_times.append(self.global_timer - current_process.start_time)
                     self.stats.exec_waiting_times.append(current_process.execution_waiting_time)
                     self.q.pop(current_process)
 

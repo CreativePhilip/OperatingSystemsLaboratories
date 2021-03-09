@@ -6,13 +6,6 @@ class Process:
     """
     Process class that represents a process to be executed
     """
-    name: str
-    time_of_arrival: int
-    execution_time: int
-    execution_time_left: int
-
-    start_time: int
-
     def __init__(self, name, time_of_arrival, execution_time):
         self.name = name
         self.time_of_arrival = time_of_arrival

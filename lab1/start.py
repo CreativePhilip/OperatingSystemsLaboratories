@@ -10,7 +10,7 @@ from rich.table import Table
 
 from lab1.schedulers import fsfc_scheduler, Rotational, sjf_non_preemptive, sjf_preemptive
 from lab1.simulation import Simulation
-from utils.queue import ProcessQueue
+from utils.queue import ProcessQueue, ProcessSorting
 from copy import deepcopy
 
 
@@ -28,7 +28,7 @@ def simulate(data: Dict):
     console.print(param_table(data))
 
     if data["verbose"]:
-        console.print(queue.table())
+        console.print(queue.table(ProcessSorting.ET))
 
     s1 = Simulation(deepcopy(queue), fsfc_scheduler, "FSFC Scheduler")
     s2 = Simulation(deepcopy(queue), sjf_non_preemptive, "JSF Non Preemptive Scheduler")
