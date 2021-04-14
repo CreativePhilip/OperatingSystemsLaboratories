@@ -14,7 +14,7 @@ for the read requests. <br/>
 To ensure results consistent across algorithms a robust backend was required. To achieve that I have created
 a Simulation class responsible for the main execution "loop" as well as statistical data collection.
 An algorithm was just a plugin into the class. Again to ensure consistency I have created a type that
-the functions performing process selecting had to conform to.
+the functions performing request selecting had to conform to.
 ```python
 ALGO_LAMBDA: Type = Callable[[RequestQueue, ReadRequest, int], Tuple[Optional[ReadRequest], int]]
 
@@ -26,8 +26,8 @@ def algorithm(q: RequestQueue, previous_request: ReadRequest, read_head: int) ->
 ### Queue creation
 To avoid the need for calculating a chance for a new request every "tick" and for keeping count of the globally created
 request and to ensure consistent request creation across other algorithms. The queue is pre-allocated before starting
-the simulation. In addition to a unique name and data location property each process had a time_of_arrival value
-which indicated after which tick number can the process be considered for execution.  
+the simulation. In addition to a unique name and data location property each request had a time_of_arrival value
+which indicated after which tick number can the request be considered for seeking.  
 
 #### The creation of the global queue is parametrized with 4 values:
 1. Number of requests to create
@@ -39,7 +39,7 @@ which indicated after which tick number can the process be considered for execut
 Every "tick" of the execution loop the selected algorithm had 3 options:
 1. To leave the current request for another "round" of execution
 2. To swap the current request for a different one
-3. To return None, which means that currently there are no processes in the queue
+3. To return None, which means that currently there are no requests in the queue
 4. To select the new position of the RW head
 
 ## Results
